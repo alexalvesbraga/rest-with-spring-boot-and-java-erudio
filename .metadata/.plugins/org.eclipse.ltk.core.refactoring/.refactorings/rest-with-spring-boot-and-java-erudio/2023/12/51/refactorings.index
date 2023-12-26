@@ -2,3 +2,8 @@
 1703259436590	Rename type 'RestWithSpringBootAndJavaErudioApplicationTests'
 1703259463307	Delete elements
 1703259480162	Rename resource 'application.properties'
+1703268498468	Delete element
+1703268528571	Rename type 'GreetingController'
+1703269582698	Rename package 'br.com.erudio.exception'
+1703269832182	Rename type 'WxceptionResponse'
+1703274060495	Move compilation unit
