@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dirs>
+    <entry loc="C:\spring tools\sts-4.21.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858" stamp="1703675908887"/>
     <entry loc="C:\Program Files\Java\jdk-16.0.2" stamp="1703255750614"/>
+    <entry loc="C:\java\jdk-21.0.1" stamp="1703675478142"/>
     <entry loc="C:\Program Files\Java\jdk-21" stamp="1703258943839"/>
     <entry loc="C:\Program Files\SpringTools4\sts-4.21.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858" stamp="1703256349317"/>
+    <entry loc="C:\spring tools\sts-4.21.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\jre" stamp="1703675908778"/>
     <entry loc="C:\Program Files\SpringTools4\sts-4.21.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\jre" stamp="1703256349214"/>
 </dirs>

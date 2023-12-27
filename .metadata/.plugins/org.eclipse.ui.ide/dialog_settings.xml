@@ -38,6 +38,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\projetos spring boot\rest-with-spring-boot-and-java-erudio\05_FirstStepsInJavaSpringBoot"/>
 			<item value="C:\projetos_spring_boot\rest-with-spring-boot-and-java-erudio\06_ParametersAndExceptionHandler"/>
 		</list>
 	</section>
