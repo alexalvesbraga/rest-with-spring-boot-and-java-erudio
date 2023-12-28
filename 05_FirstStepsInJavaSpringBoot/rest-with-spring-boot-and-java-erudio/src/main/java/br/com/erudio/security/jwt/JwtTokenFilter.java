@@ -3,27 +3,15 @@ package br.com.erudio.security.jwt;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import org.apache.catalina.core.ApplicationContext;
-import org.springframework.beans.BeanWrapper;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.filter.GenericFilterBean;
-import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import br.com.erudio.exceptions.ForbiddenException;
-import br.com.erudio.exceptions.handler.CustomizeResponseEntityExceptionHandler;
 import jakarta.servlet.FilterChain;
-import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
@@ -35,14 +23,6 @@ public class JwtTokenFilter extends GenericFilterBean{
 	
 	@Autowired
 	private JwtTokenProvider tokenProvider;
-	
-	private CustomizeResponseEntityExceptionHandler customizeResponseEntityExceptionHandler;
-	
-
-  
-	
-	
-	
 	
 	public JwtTokenFilter(JwtTokenProvider tokenProvider) {
 		this.tokenProvider = tokenProvider;
