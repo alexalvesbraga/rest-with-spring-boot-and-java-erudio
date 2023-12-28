@@ -1,16 +1,16 @@
 package br.com.erudio.service;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import br.com.erudio.controler.PersonController;
-import br.com.erudio.exceptions.RequiredObjectsIsNullException;
 import br.com.erudio.exceptions.ResourceNotFoundException;
 import br.com.erudio.mapper.DozzerMapper;
 import br.com.erudio.mapper.custom.PersonMapper;
@@ -50,7 +50,7 @@ public class PersonService {
 	}
 	
 	public PersonVO create(PersonVO personVO) {
-		if(personVO == null) throw new RequiredObjectsIsNullException();
+		if(personVO == null) throw new ResourceNotFoundException("Pessoa não encontrada");
 		logger.info("Creating one PersonVO!");
 		var entity = DozzerMapper.parseObject(personVO, Person.class);
 		var vo = DozzerMapper.parseObject(repository.save(entity), PersonVO.class);
