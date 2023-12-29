@@ -27,16 +27,17 @@ public class SecurityConfig {
 	private JwtTokenProvider tokenProvider;
 	
 	@Bean
-	public PasswordEncoder passwordEncoder() {
+	PasswordEncoder passwordEncoder() {
 		Map<String, PasswordEncoder> encoders = new HashMap<>();
-		encoders.put("pbkdf2", Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8());
+		Pbkdf2PasswordEncoder pbkdf2 = Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
+		encoders.put("pbkdf2", pbkdf2);
 		DelegatingPasswordEncoder passwordEncoder = new DelegatingPasswordEncoder("pbkdf2", encoders);
-		passwordEncoder.setDefaultPasswordEncoderForMatches(Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8());
+		passwordEncoder.setDefaultPasswordEncoderForMatches(pbkdf2);
 		return passwordEncoder;
 	}
 
 	@Bean
-	public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+	AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
 	    return http.getSharedObject(AuthenticationManagerBuilder.class)
 	            .build();
 	}
@@ -45,23 +46,22 @@ public class SecurityConfig {
 	@Bean
 	protected SecurityFilterChain  filterChain(HttpSecurity http) throws Exception {
 		http
-			.httpBasic().disable()
-			.csrf().disable()
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				.and()
-					.authorizeRequests()
-					.requestMatchers(
-							"/auth/signin",
-							"/auth/refresh",
-							"/api-docs/**",
-							"/swagger-ui/**"
+			.httpBasic(basic -> basic.disable())
+			.csrf(csrf -> csrf.disable())
+			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+					.authorizeHttpRequests(
+							authorizeHttpRequestsConfigurer -> authorizeHttpRequestsConfigurer
+								.requestMatchers(
+										"/auth/signin",
+										"/auth/refresh/**",
+										"/api-docs/**",
+										"/swagger-ui/**"
 						).permitAll()
-					.requestMatchers("/api/**").authenticated()
-					.requestMatchers("/users").denyAll()
-				.and()
-					.cors()
-				.and()
-				.apply(new JwtConfigurer(tokenProvider));
+						 .requestMatchers("/api/**").authenticated()
+						 .requestMatchers("/users").denyAll()
+					)
+					.cors(cors -> {} )			
+					.apply(new JwtConfigurer(tokenProvider));
 		return http.build();
 	}
 }
